@@ -31,6 +31,13 @@ func myRoute(r *gin.RouterGroup) {
 			"message": "pong",
 		})
 	})
+
+	r.GET("detail", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"T1": "test T1 Lorem Ipsum is simply dummy text of the printing and typesetting",
+			"T2": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+		})
+	})
 }
 
 func init() {
