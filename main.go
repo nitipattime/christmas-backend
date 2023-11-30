@@ -1,6 +1,31 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
+
+var (
+	app *gin.Engine
+)
+
+func myRoute(r *gin.RouterGroup) {
+	r.GET("ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+}
+
+func init() {
+	app = gin.New()
+	r := app.Group("/api")
+	myRoute(r)
+}
+
+func Handler(w http.ResponseWriter, r *http.Request) {
+	app.ServeHTTP(w, r)
+}
 
 func main() {
 	r := gin.Default()
