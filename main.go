@@ -1,9 +1,25 @@
-package main
+package handler
 
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
+
+// V3
+
+//func Handler(w http.ResponseWriter, r *http.Request) {
+//	server := New()
+//
+//	server.get("/", func(context *Context) {
+//		context.JSON(200, H{
+//			"message": "test",
+//		})
+//	})
+//
+//	server.Handle(w, r)
+//}
+
+// V2
 
 var (
 	app *gin.Engine
@@ -26,6 +42,8 @@ func init() {
 func Handler(w http.ResponseWriter, r *http.Request) {
 	app.ServeHTTP(w, r)
 }
+
+// V1
 
 // func main() {
 // 	r := gin.Default()
