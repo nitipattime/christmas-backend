@@ -44,7 +44,7 @@ func myRoute(r *gin.RouterGroup) {
 		})
 	})
 
-	r.GET("detail", func(c *gin.Context) {
+	r.GET("array", func(c *gin.Context) {
 		test := make([]string, 0)
 		test = append(test, "test1")
 		test = append(test, "test2")
