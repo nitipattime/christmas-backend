@@ -25,6 +25,11 @@ var (
 	app *gin.Engine
 )
 
+type Detail struct {
+	T1 string `json:"t1"`
+	T2 string `json:"t2"`
+}
+
 func myRoute(r *gin.RouterGroup) {
 	r.GET("ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
@@ -36,6 +41,26 @@ func myRoute(r *gin.RouterGroup) {
 		c.JSON(200, gin.H{
 			"T1": "test T1 Lorem Ipsum is simply dummy text of the printing and typesetting",
 			"T2": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+		})
+	})
+
+	r.GET("detail", func(c *gin.Context) {
+		test := make([]string, 0)
+		test = append(test, "test1")
+		test = append(test, "test2")
+
+		s := make([]Detail, 0)
+		s = append(s, Detail{
+			T1: "test T1 Lorem Ipsum is",
+			T2: "It is a long established",
+		})
+		s = append(s, Detail{
+			T1: "dummy text of the printing and typesetting",
+			T2: "fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+		})
+		c.JSON(200, gin.H{
+			"array":  test,
+			"struct": s,
 		})
 	})
 }
