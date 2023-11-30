@@ -27,48 +27,58 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	app.ServeHTTP(w, r)
 }
 
-func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+// func main() {
+// 	r := gin.Default()
+// 	r.GET("/ping", func(c *gin.Context) {
+// 		c.JSON(200, gin.H{
+// 			"message": "pong",
+// 		})
+// 	})
 
-	v1 := r.Group("/v1")
-	{
-		v1.GET("/login", loginEndpoint)
-		v1.GET("/detail", GetDetail)
-		//v1.POST("/read", readEndpoint)
-	}
+// 	v1 := r.Group("/v1")
+// 	{
+// 		v1.GET("/login", loginEndpoint)
+// 		v1.GET("/detail", GetDetail)
+// 		//v1.POST("/read", readEndpoint)
+// 	}
 
-	r.Run() // listen and serve on 0.0.0.0:8080
-}
+// 	r.Run() // listen and serve on 0.0.0.0:8080
+// }
 
-type StructA struct {
-	FieldA string `form:"field_a"`
-	Text   string `form:"text"`
-}
+// type StructA struct {
+// 	FieldA string `form:"field_a"`
+// 	Text   string `form:"text"`
+// }
 
-type Detail struct {
-	T1 string `json:"t1"`
-	T2 string `json:"t2"`
-}
+// type Detail struct {
+// 	T1 string `json:"t1"`
+// 	T2 string `json:"t2"`
+// }
 
-func loginEndpoint(c *gin.Context) {
+// func loginEndpoint(c *gin.Context) {
 
-	var b StructA
-	c.Bind(&b)
-	c.JSON(200, gin.H{
-		"field":     b.FieldA,
-		"Test_text": b.Text,
-	})
-}
+// 	var b StructA
+// 	c.Bind(&b)
+// 	c.JSON(200, gin.H{
+// 		"field":     b.FieldA,
+// 		"Test_text": b.Text,
+// 	})
+// }
 
-func GetDetail(c *gin.Context) {
-	//var d Detail
-	c.JSON(200, gin.H{
-		"T1": "test T1 Lorem Ipsum is simply dummy text of the printing and typesetting",
-		"T2": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-	})
-}
+// func GetDetail(c *gin.Context) {
+// 	//var d Detail
+// 	c.JSON(200, gin.H{
+// 		"T1": "test T1 Lorem Ipsum is simply dummy text of the printing and typesetting",
+// 		"T2": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+// 	})
+// }
+
+// vercel.json
+// "routes": [
+//   {"src": "/(.*)","dest":"/api"}
+// ],
+// "build": {
+//   "env": {
+//     "GO_BUILD_FLAGS": "-ldflags '-s -w'"
+//   }
+// },
