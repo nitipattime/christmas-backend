@@ -30,6 +30,12 @@ type Detail struct {
 	T2 string `json:"t2"`
 }
 
+func test(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"test": "test",
+	})
+}
+
 func myRoute(r *gin.RouterGroup) {
 	r.GET("ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
@@ -65,9 +71,6 @@ func myRoute(r *gin.RouterGroup) {
 	})
 
 	r.GET("test", test)
-
-	//useCase := New(test)
-	//r.GET("test2", New.)
 }
 
 func init() {
