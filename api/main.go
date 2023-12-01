@@ -63,6 +63,11 @@ func myRoute(r *gin.RouterGroup) {
 			"struct": s,
 		})
 	})
+
+	r.GET("test", test)
+
+	//useCase := New(test)
+	//r.GET("test2", New.)
 }
 
 func init() {
