@@ -73,6 +73,7 @@ func myRoute(r *gin.RouterGroup) {
 	r.GET("test01", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "<img src=x onerror='alert('XSS')'>",
+			"message01": "\u003Cimg src=x onerror='alert('XSS')'\u003E",
 		})
 	})
 
